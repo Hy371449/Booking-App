@@ -20,7 +20,7 @@ const Login = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8800/api/auth/register", {
+      const response = await fetch("https://booking-backend-yoca.onrender.com/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const response = await fetch("http://localhost:8800/api/auth/login", {
+      const response = await fetch("https://booking-backend-yoca.onrender.com/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
