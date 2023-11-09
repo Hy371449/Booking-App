@@ -23,7 +23,7 @@ const Hotel = () => {
 
   const hotelId = useLocation().pathname.split("/")[2];
 
-  const {data, reFecth} = useFetch(`http://localhost:8800/api/hotels/find/${hotelId}`);
+  const {data, reFecth} = useFetch(`https://booking-backend-yoca.onrender.com/api/hotels/find/${hotelId}`);
 
   const { dates, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
