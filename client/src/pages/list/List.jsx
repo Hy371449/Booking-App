@@ -17,7 +17,7 @@ const List = () => {
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(999);
 
-  const {data, reFetch} = useFetch(`http://localhost:8800/api/hotels/find?city=${destination}&min=${min}&max=${max}`);
+  const {data, reFetch} = useFetch(`https://booking-backend-yoca.onrender.com/api/hotels/find?city=${destination}&min=${min}&max=${max}`);
   const handleClick = async () => {
     reFetch();
   };
