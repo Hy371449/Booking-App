@@ -3,7 +3,7 @@ import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
   const {data, reFecth} = useFetch(
-    "http://localhost:8800/api/hotels/find?featured=true&limit=4"
+    "https://booking-backend-yoca.onrender.com/api/hotels/find?featured=true&limit=4"
   );
 
   return (
