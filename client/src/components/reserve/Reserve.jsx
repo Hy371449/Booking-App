@@ -8,7 +8,7 @@ import { SearchContext } from "../../context/SearchContext";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
-  const { data } = useFetch(`http://localhost:8800/api/hotels/room/${hotelId}`);
+  const { data } = useFetch(`https://booking-backend-yoca.onrender.com/api/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
 
   const getDatesInRange = (startDate, endDate) => {
@@ -51,7 +51,7 @@ const Reserve = ({ setOpen, hotelId }) => {
       await Promise.all(
         selectedRooms.map((roomNumber) => {
           const response = fetch(
-            `http://localhost:8800/api/rooms/availability/${hotelId}/${roomNumber}`,
+            `https://booking-backend-yoca.onrender.com/api/rooms/availability/${hotelId}/${roomNumber}`,
             {
               method: "PUT",
               headers: {
