@@ -8,7 +8,7 @@ const UpdateModal = ({ hotel, setShowUpdateModal, handleHotelQuery }) => {
     e.preventDefault();
 
     try {
-      await fetch(`http://localhost:8800/api/hotels/${hotel._id}`, {
+      await fetch(`https://booking-backend-yoca.onrender.com/api/hotels/${hotel._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -134,7 +134,7 @@ const HotelsManagement = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:8800/api/hotels/find/${hotel.hotelId}`
+        `https://booking-backend-yoca.onrender.com/api/hotels/find/${hotel.hotelId}`
       );
       const result = await response.json();
       setHotels(result);
@@ -146,7 +146,7 @@ const HotelsManagement = () => {
   const handleHotelDelete = async (e) => {
     e.preventDefault();
     try {
-      await fetch(`http://localhost:8800/api/hotels/${e.target.value}`, {
+      await fetch(`https://booking-backend-yoca.onrender.com/api/hotels/${e.target.value}`, {
         method: "DELETE",
       });
       setHotels(hotels.filter((hotel) => hotel._id !== e.target.value));
@@ -164,7 +164,7 @@ const HotelsManagement = () => {
       }
     }
     try {
-      await fetch(`http://localhost:8800/api/hotels/`, {
+      await fetch(`https://booking-backend-yoca.onrender.com/api/hotels/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
