@@ -8,7 +8,7 @@ const UpdateModal = ({ userId, setShowUpdateModal, handleUserQuery }) => {
     e.preventDefault();
    
     try {
-      await fetch(`http://localhost:8800/api/users/${userId}`, {
+      await fetch(`https://booking-backend-yoca.onrender.com/api/users/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const UsersManagement = () => {
   const handleUserQuery = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8800/api/users/${userId}`);
+      const response = await fetch(`https://booking-backend-yoca.onrender.com/api/users/${userId}`);
       const result = await response.json();
       setUsers(result);
     } catch (err) {
@@ -59,7 +59,7 @@ const UsersManagement = () => {
   const handleUserDelete = async (e) => {
     e.preventDefault();
     try {
-      await fetch(`http://localhost:8800/api/users/${e.target.value}`, {
+      await fetch(`https://booking-backend-yoca.onrender.com/api/users/${e.target.value}`, {
         method: "DELETE",
       });
       setUsers(users.filter((user) => user._id !== e.target.value));
