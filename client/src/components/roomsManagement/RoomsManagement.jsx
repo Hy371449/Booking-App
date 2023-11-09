@@ -8,7 +8,7 @@ const UpdateModal = ({ room, setShowUpdateModal, handleRoomQuery }) => {
     e.preventDefault();
 
     try {
-      await fetch(`http://localhost:8800/api/rooms/${room._id}`, {
+      await fetch(`https://booking-backend-yoca.onrender.com/api/rooms/${room._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const RoomsManagement = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:8800/api/rooms/${room.roomId}`
+        `https://booking-backend-yoca.onrender.com/api/rooms/${room.roomId}`
       );
       const result = await response.json();
       setRooms(result);
@@ -99,7 +99,7 @@ const RoomsManagement = () => {
   const handleRoomDelete = async (e, roomId, hotelId) => {
     e.preventDefault();
     try {
-      await fetch(`http://localhost:8800/api/rooms/${roomId}/${hotelId}`, {
+      await fetch(`https://booking-backend-yoca.onrender.com/api/rooms/${roomId}/${hotelId}`, {
         method: "DELETE",
       });
       setRooms(rooms.filter((room) => room._id !== roomId));
@@ -117,7 +117,7 @@ const RoomsManagement = () => {
       }
     }
     try {
-      await fetch(`http://localhost:8800/api/rooms/${room.hotelId}`, {
+      await fetch(`https://booking-backend-yoca.onrender.com/api/rooms/${room.hotelId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
