@@ -2,7 +2,7 @@ import useFetch from "../../hooks/useFetch";
 import "./featured.css";
 
 const Featured = () => {
-  const {data, reFecth} = useFetch("https://booking-backend-yoca.onrender.com/api/hotels/countByCity?cities=berlin,madrid,london")
+  const {data, reFecth} = useFetch("https://booking-backend-yoca.onrender.com/api/hotels/countByCity?cities=Berlin,Madrid,London")
 
   return (
     <div className="featured">
