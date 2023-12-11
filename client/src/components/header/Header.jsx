@@ -13,7 +13,8 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -44,11 +45,11 @@ const Header = ({ type }) => {
     });
   };
 
-  // search based on data(destination, date, options) in context 
-  const {dispatch} = useContext(SearchContext)
+  // search based on data(destination, date, options) in context
+  const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
-    dispatch({type:"NEW_SEARCH", payload: {destination, dates, options}});
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
   };
 
@@ -62,14 +63,26 @@ const Header = ({ type }) => {
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
-              It's truly brilliant - a lifetime filled with discounts for our members.
+              It's truly brilliant - a lifetime filled with discounts for our
+              members.
             </h1>
             <p className="headerDesc">
               Sign up and you will get the best deals from us!
             </p>
-            <Link to='/login'>
-              {!user && <button className="headerBtn">Sign in / Register</button>}
-            </Link>
+
+            {user ? (
+              <div>
+                <strong>Hello {user.username}! Welcome to StayInn!</strong>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
+                <button className="headerBtn">Sign in / Register</button>
+              </Link>
+            )}
+
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -80,7 +93,15 @@ const Header = ({ type }) => {
                   onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
-              <div className="headerSearchItem">
+              <div
+                className="headerSearchItem"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    setOpenDate(!openDate);
+                  }
+                }}
+              >
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                 <span
                   onClick={() => setOpenDate(!openDate)}
@@ -100,7 +121,16 @@ const Header = ({ type }) => {
                   />
                 )}
               </div>
-              <div className="headerSearchItem">
+              <div
+                className="headerSearchItem"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  console.log(event);
+                  if (event.key === "Enter") {
+                    setOpenOptions(!openOptions);
+                  }
+                }}
+              >
                 <FontAwesomeIcon icon={faPerson} className="headerIcon" />
                 <span
                   onClick={() => setOpenOptions(!openOptions)}
@@ -188,3 +218,7 @@ const Header = ({ type }) => {
 };
 
 export default Header;
+
+Header.propTypes = {
+  type: PropTypes.string,
+};
