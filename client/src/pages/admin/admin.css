@@ -1,0 +1,12 @@
+.admin-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.users {
+    flex: 1;
+}
+
+.rooms {
+    flex: 1;
+}
